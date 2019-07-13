@@ -1,0 +1,34 @@
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <div id="formFooter">To Thine Own Self Be True</div>
+    <br />
+    <form (submit)="validateUser($event, username, password)">
+      <input
+        required
+        type="text"
+        id="login"
+        class="fadeIn second"
+        name="login"
+        placeholder="login"
+        #username
+      />
+      <input
+        required
+        type="text"
+        id="password"
+        class="fadeIn third"
+        name="login"
+        placeholder="password"
+        #password
+      />
+      <br />
+      <br />
+      <input type="submit" class="fadeIn fourth" value="Log In" />
+    </form>
+    <div id="formFooter">
+      <span class="fadeIn badge badge-danger" *ngIf="isLoginSuccess == false"
+        >അത് തെറ്റാണ് മോനെ, സ്ഥലം വിട്ടോ !!</span
+      >
+    </div>
+  </div>
+</div>
