@@ -7,27 +7,38 @@ import {
   Route
 } from '@angular/router';
 import { Observable } from 'rxjs';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService implements CanActivate {
   isLoginSuccess = false;
-  constructor(private router: Router) {}
+  username = '';
+  constructor(private router: Router, private cookies: CookieService) {}
 
   logout() {
     this.isLoginSuccess = false;
+    this.cookies.deleteAll();
     this.router.navigate(['/login']);
   }
 
-  login(userName, password) {
-    if (userName === 'htaras' && password === 'htaras') {
-      this.isLoginSuccess = true;
-      this.router.navigate(['/home']);
+  login(username, password) {
+    this.username = username;
+    if (username === password) {
+      this.cookies.set('isLoginSuccess', 'true');
+      this.cookies.set('username', username);
+      this.loginSuccess();
     } else {
       this.isLoginSuccess = false;
     }
     return this.isLoginSuccess;
+  }
+
+  loginSuccess() {
+    this.username = this.cookies.get('username');
+    this.isLoginSuccess = true;
+    this.router.navigate(['/home']);
   }
 
   canActivate(

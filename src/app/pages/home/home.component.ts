@@ -7,9 +7,12 @@ import { LoginService } from '../login/login.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  username = '';
   constructor(private loginService: LoginService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.username = this.loginService.username;
+  }
 
   onLogout() {
     this.loginService.logout();

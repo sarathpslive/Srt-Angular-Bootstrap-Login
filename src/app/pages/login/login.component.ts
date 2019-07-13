@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from './login.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-login',
@@ -8,9 +9,16 @@ import { LoginService } from './login.service';
 })
 export class LoginComponent implements OnInit {
   isLoginSuccess = null;
-  constructor(private loginService: LoginService) {}
+  constructor(
+    private loginService: LoginService,
+    private cookies: CookieService
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    if (this.cookies.get('isLoginSuccess') === 'true') {
+      this.loginService.loginSuccess();
+    }
+  }
 
   validateUser(e, username, password) {
     e.preventDefault();

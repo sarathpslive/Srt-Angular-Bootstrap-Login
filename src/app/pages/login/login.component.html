@@ -1,6 +1,6 @@
 <div class="wrapper fadeInDown">
   <div id="formContent">
-    <div id="formFooter">To Thine Own Self Be True</div>
+    <div id="formFooter">Login Here</div>
     <br />
     <form (submit)="validateUser($event, username, password)">
       <input
@@ -27,8 +27,12 @@
     </form>
     <div id="formFooter">
       <span class="fadeIn badge badge-danger" *ngIf="isLoginSuccess == false"
-        >അത് തെറ്റാണ് മോനെ, സ്ഥലം വിട്ടോ !!</span
+        >അത് തെറ്റാണ് Bro !!</span
       >
+      <br />
+      <span class="fadeIn badge badge-success" *ngIf="isLoginSuccess == false"
+        >try a matching username and password!!
+      </span>
     </div>
   </div>
 </div>
