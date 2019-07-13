@@ -1,6 +1,6 @@
 <div class="wrapper fadeInDown">
   <div id="formContent">
-    <div id="formFooter">Login Here</div>
+    <div id="formHeader">login</div>
     <br />
     <form (submit)="validateUser($event, username, password)">
       <input
@@ -9,7 +9,7 @@
         id="login"
         class="fadeIn second"
         name="login"
-        placeholder="login"
+        placeholder="username"
         #username
       />
       <input
@@ -26,6 +26,13 @@
       <input type="submit" class="fadeIn fourth" value="Log In" />
     </form>
     <div id="formFooter">
+      <a
+        class="fadeIn"
+        target="_blank"
+        href="https://github.com/sarathpslive/srt-angular-bootstrap-login"
+        *ngIf="isLoginSuccess != false"
+        >source code</a
+      >
       <span class="fadeIn badge badge-danger" *ngIf="isLoginSuccess == false"
         >അത് തെറ്റാണ് Bro !!</span
       >
